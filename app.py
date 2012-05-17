@@ -9,9 +9,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def soft_serve():
-	html = pq(urllib2.urlopen('http://www.biritecreamery.com/icrecream').read())
+	html = pq(urllib2.urlopen('http://www.biritecreamery.com/icecream').read())
 	days = html("#primary .column-right ul")[3].findall("li")
-	flavors = days[datetime.date.today().weekday()].text_coontent
+	flavors = days[datetime.date.today().weekday()].text_content()
 	return flavors.split(': ')[1]
 
 
